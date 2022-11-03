@@ -4,7 +4,9 @@
       <a class="navbar-brand">Shoppingcart-App</a>
       <form class="form-inline">
         <NuxtLink to="/cart">
-          <i class="fas fa-shopping-cart text-primary icon-3x mx-2"></i><span class="badge badge-warning">{{ getCart.length }}</span> 
+          Lihat Keranjang 
+          <i class="fas fa-shopping-cart text-primary icon-3x mx-2"></i>
+          <span v-if="getCart.length > 0" class="badge badge-warning">{{ getCart.length }}</span> 
         </NuxtLink>
       </form>
     </nav>
@@ -36,10 +38,12 @@
                   <i class="fas fa-star text-warning mt-1 mr-1"></i> <span class="text-warning"> {{ product.rating }} </span>
                 </div>
                 <div class="col-12 pt-4">
-                  <div class="d-flex justify-content-center align-items-center" v-if="getQty(product.id) && getQtyValue(product.id) > 0"> 
-                    <button class="btn btn-custom" @click.prevent="minusQty(product.id)"> <span> - </span> </button>   
-                      <span class="mx-4"> {{ getQtyValue(product.id) }}  </span>  
-                    <button class="btn btn-custom " @click.prevent="plusQty(product.id)"><span> + </span></button>
+                  <div v-if="getQty(product.id) && getQtyValue(product.id) > 0"> 
+                    <div class="d-flex justify-content-center align-items-center">
+                      <button class="btn btn-custom" @click.prevent="minusQty(product.id)"> <span> - </span> </button>   
+                        <span class="mx-4"> {{ getQtyValue(product.id) }}  </span>  
+                      <button class="btn btn-custom " @click.prevent="plusQty(product.id)"><span> + </span></button>
+                    </div>
                   </div>
                   <div v-else>
                     <a  href="" @click.prevent="addToCart(product, index)" class="btn text-white bg-lightblue btn-lg bg-primary w-100">
@@ -138,7 +142,9 @@ export default {
         localStorage.setItem("cart", JSON.stringify([product]))
       }
 
-      this.$router.push("/cart")
+      this.getData()
+
+      // this.$router.push("/cart")
     }
   },
   mounted(){
