@@ -21,8 +21,8 @@
                         <tr v-for="(item, index) in cart" :key="index">
                             <td>{{ item.title }}</td>
                             <td> {{ item.qty }} </td>
-                            <td> {{ item.priceFix }} </td>
-                            <td> {{ item.sub_total }} </td>
+                            <td> $ {{ item.priceFix }} </td>
+                            <td> $ {{ item.sub_total }} </td>
                             <td> <a href="" class="btn btn-sm btn-danger" @click.prevent="deleteLocalStorage(item.id)">Hapus</a> </td>
                         </tr>
                       </template>
@@ -33,7 +33,7 @@
             <div class="row px-4">
               <div class="col-12 d-flex justify-content-between">
                 <h4 class="">Total</h4>
-                <h4 class=""> {{ getTotal() }} $</h4>
+                <h4 class=""> $ {{ getTotal() }}</h4>
               </div>
             </div>
             <div class="row px-4 my-4 row justify-content-center">

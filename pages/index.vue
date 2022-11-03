@@ -23,7 +23,7 @@
                <div class="col-12">
                 <p class="text-secondary h6">{{ product.title }}</p>
                  <p class="text-dark">{{product.description}}</p>
-                 <h5>Rp. {{ product.discountPercentage ? product.price - (product.price * product.discountPercentage/100) : product.discountPercentage }} $</h5>
+                 <h5> $ {{ product.discountPercentage ? product.price - (product.price * product.discountPercentage/100) : product.price }} </h5>
                  <div class="d-flex">
                     <p class="bg-danger1 px-1 py-1 text-danger">{{ product.discountPercentage }} %</p>
                     <div class="" v-if="product.discountPercentage">
