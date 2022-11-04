@@ -22,7 +22,7 @@
                             <td>{{ item.title }}</td>
                             <td> {{ item.qty }} </td>
                             <td> $ {{ item.priceFix }} </td>
-                            <td> $ {{ item.priceFix * item.qty }} </td>
+                            <td> $ {{ addSubTotal(item, index) }} </td>
                             <td> <a href="" class="btn btn-sm btn-danger" @click.prevent="deleteLocalStorage(item.id)">Hapus</a> </td>
                         </tr>
                       </template>
@@ -59,6 +59,12 @@ export default {
         }
     },
     methods:{
+      addSubTotal(item, index){
+         this.cart[index].sub_total =  this.cart[index].qty *  this.cart[index].priceFix
+         console.log(this.cart);
+
+         return this.cart[index].sub_total
+      },
       deleteLocalStorage(id){
         let old = JSON.parse(localStorage.getItem("cart")) || []
         if(old){
