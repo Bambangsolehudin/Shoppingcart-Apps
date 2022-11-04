@@ -121,7 +121,6 @@ export default {
     addToCart(product){
       product.priceFix = product.discountPercentage ? product.price - (product.price * product.discountPercentage/100) : product.price
       product.qty = 1
-      product.sub_total = product.discountPercentage ? product.price - (product.price * product.discountPercentage/100) : product.price
       
       let old = JSON.parse(localStorage.getItem("cart")) || []
 
@@ -131,7 +130,6 @@ export default {
           old.forEach((e, i) => {
             if(e.id == product.id){
               old[i].qty += 1
-              old[i].sub_total = old[i].sub_total * old[i].qty
             }
           })
         }else{

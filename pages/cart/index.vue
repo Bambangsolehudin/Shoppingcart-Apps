@@ -22,7 +22,7 @@
                             <td>{{ item.title }}</td>
                             <td> {{ item.qty }} </td>
                             <td> $ {{ item.priceFix }} </td>
-                            <td> $ {{ item.sub_total }} </td>
+                            <td> $ {{ item.priceFix * item.qty }} </td>
                             <td> <a href="" class="btn btn-sm btn-danger" @click.prevent="deleteLocalStorage(item.id)">Hapus</a> </td>
                         </tr>
                       </template>
@@ -80,6 +80,7 @@ export default {
           data = data.filter(e => e.qty != 0)
           localStorage.setItem("cart", JSON.stringify(data))
           this.cart = data
+         
         }
       }
     },
